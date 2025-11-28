@@ -3,7 +3,7 @@ class Solution {
 
         int count = 0 ;
 
-        ArrayList<Character> vowels = new ArrayList<>();
+        HashSet<Character> vowels = new HashSet<>();
         vowels.add('a');
         vowels.add('e');
         vowels.add('i');
