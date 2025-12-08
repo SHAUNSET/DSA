@@ -1,24 +1,14 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
+        int i = 0, j = 0;
 
-        if (s.length() == 0) return true;
-
-
-        Stack<Character> st = new Stack<>();
-
-
-        for (int i = 0; i < s.length(); i++) {
-            st.push(s.charAt(i));
-        }
-
-        for (int i = t.length() - 1; i >= 0 && !st.isEmpty(); i--) {
-
-            if (t.charAt(i) == st.peek()) {
-                st.pop();
+        while (i < s.length() && j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
             }
+            j++;
         }
 
-
-        return st.isEmpty();
+        return i == s.length();
     }
 }
