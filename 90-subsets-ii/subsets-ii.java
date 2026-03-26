@@ -6,26 +6,27 @@ class Solution {
 
         Arrays.sort(nums); 
 
-        Set<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> result = new ArrayList<>();
         List<Integer> current = new ArrayList<>();
 
-        solve(0, nums, current, set);
+        solve(0, nums, current, result);
 
-        return new ArrayList<>(set); 
+        return result;
     }
 
-    void solve(int index, int[] nums, List<Integer> current, Set<List<Integer>> set) {
+    void solve(int index, int[] nums, List<Integer> current, List<List<Integer>> result) {
 
-        if (index == nums.length) {
-            set.add(new ArrayList<>(current)); 
-            return;
+        result.add(new ArrayList<>(current)); 
+
+        for (int i = index; i < nums.length; i++) {
+
+            if (i > index && nums[i] == nums[i - 1]) continue;
+
+            current.add(nums[i]);
+
+            solve(i + 1, nums, current, result);
+
+            current.remove(current.size() - 1);
         }
-
-        current.add(nums[index]);
-        solve(index + 1, nums, current, set);
-
-        current.remove(current.size() - 1);
-
-        solve(index + 1, nums, current, set);
     }
 }
