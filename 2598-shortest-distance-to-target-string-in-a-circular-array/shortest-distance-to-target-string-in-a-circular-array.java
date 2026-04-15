@@ -1,0 +1,26 @@
+class Solution {
+    public int closestTarget(String[] words, String target, int startIndex) {
+
+        int n = words.length;
+        int[] mark = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            if (words[i].equals(target)) {
+                mark[i] = 1;
+            }
+        }
+
+        int minDist = Integer.MAX_VALUE;
+
+ 
+        for (int i = 0; i < n; i++) {
+            if (mark[i] == 1) {
+                int diff = Math.abs(i - startIndex);
+                int circularDist = Math.min(diff, n - diff);
+                minDist = Math.min(minDist, circularDist);
+            }
+        }
+
+        return minDist == Integer.MAX_VALUE ? -1 : minDist;
+    }
+}
