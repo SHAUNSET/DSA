@@ -16,9 +16,6 @@ class Solution {
             if (freq % 3 == 0) {
                 rounds += freq / 3;
             } 
-            else if (freq % 3 == 1) {
-                rounds += (freq / 3 - 1) + 2;
-            } 
             else {
                 rounds += (freq / 3) + 1;
             }
